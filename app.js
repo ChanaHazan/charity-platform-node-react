@@ -3,17 +3,18 @@ const express = require('express')
 const mongoose = require('mongoose'); 
 // const { ErrorHandler} = require('./middlewares/auth');
 
-// const usersRoutes = require('./routes/authRoutes')
-// const productRoutes =require('./routes/productRoutes')
-// const categoryRoutes=require('./routes/categoryRoutes')
+const authRoutes = require('./routes/authRoutes')
+const groupRoutes = require('./routes/groupRoutes')
+const donationRoutes = require('./routes/donationRoutes')
+const fundraiserRoutes = require('./routes/fundraiserRoutes')
 
 const app = express()
 
 app.use(express.json());
-
-// app.use('/auth', usersRoutes)
-// app.use('/products', productRoutes); 
-// app.use('/categories', categoryRoutes);
+app.use('/auth', authRoutes)
+app.use('/groups', groupRoutes)
+app.use('/donations', donationRoutes)
+app.use('/fundraisers', fundraiserRoutes)
 
 // app.use(ErrorHandler)
 
