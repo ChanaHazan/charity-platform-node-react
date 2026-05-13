@@ -52,14 +52,14 @@ exports.adminRegister = async (req, res) => {
 
 // Admin login
 exports.adminLogin = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ message: 'Missing required fields: email, password' });
+  if (!name || !password) {
+    return res.status(400).json({ message: 'Missing required fields: name, password' });
   }
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ name });
     if (!user || user.role !== 'admin') {
       return res.status(401).json({ message: 'Invalid credentials or not admin' });
     }
