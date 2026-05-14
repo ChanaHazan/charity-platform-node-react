@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express')
 const mongoose = require('mongoose'); 
+const  cors = require('cors');
 // const { ErrorHandler} = require('./middlewares/auth');
 
 const authRoutes = require('./routes/authRoutes')
@@ -9,6 +10,12 @@ const donationRoutes = require('./routes/donationRoutes')
 const fundraiserRoutes = require('./routes/fundraiserRoutes')
 
 const app = express()
+app.use(cors({
+  origin: '*', 
+  methods: '*',
+  allowedHeaders: '*'
+}));
+
 
 app.use(express.json());
 app.use('/auth', authRoutes)
@@ -17,6 +24,7 @@ app.use('/donations', donationRoutes)
 app.use('/fundraisers', fundraiserRoutes)
 
 // app.use(ErrorHandler)
+
 
 const dbURI = process.env.MONGO_URI;
 

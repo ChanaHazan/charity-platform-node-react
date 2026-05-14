@@ -42,3 +42,15 @@ exports.getDonationById = async (req, res) => {
   }
 };
 
+exports.getCampaignStats = async (req, res) => {
+  try {
+    const result = await Donation.aggregate([
+      { $group: { _id: null, totalRaised: { $sum: "$amount" } } }
+    ]);
+    const total = result.length > 0 ? result[0].totalRaised : 0;
+    res.status(200).json({ totalRaised: total , goal: 1000000, percentage: total / 10000 * 100 });
+  }
+  catch (error) {
+    res.status(500).json({ message: "שגיאה בחישוב נתוני הקמפיין", error: error.message });
+  }
+}

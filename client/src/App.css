@@ -141,9 +141,9 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    li {
+    /* li {
       flex: 1 1 calc(50% - 8px);
-    }
+    } */
 
     a {
       width: 100%;
