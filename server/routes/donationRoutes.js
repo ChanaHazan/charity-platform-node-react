@@ -7,9 +7,9 @@ const {
   getCampaignStats
 } = require('../controllers/donationController');
 
+router.get('/stats', getCampaignStats);
 router.post('/', createDonation);
 router.get('/', getAllDonations);
 router.get('/:id', getDonationById);
-router.get('/stats', getCampaignStats);
 
 module.exports = router;

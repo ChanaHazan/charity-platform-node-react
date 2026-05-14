@@ -1,8 +1,8 @@
-import { configureStore} from '@reduxjs/toolkit'
-import  {campaignsReducer} from './slices/campaignsSlice'
+import { configureStore } from '@reduxjs/toolkit'
+import campaignReducer from './slice/CampaignSlice'
 export const store = configureStore({
     reducer: {
-        
+        campaign: campaignReducer
     }
 })
 

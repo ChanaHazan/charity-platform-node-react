@@ -3,6 +3,10 @@ import AmountFromTarget from './AmountFromTarget'
 import { Dialog, Button, Box } from '@mui/material'
 import { useState } from 'react';
 import Form from './Form';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCampaignStats } from '../redux/slice/CampaignSlice';
+import type { AppDispatch } from '../redux/store';
 
 const HomePage = () => {
 
@@ -12,7 +16,13 @@ const HomePage = () => {
     };
     const handleClickClose = () => {
         setOpen(false);
+        
     };
+    const dispatch = useDispatch<AppDispatch>()
+    useEffect(() => {
+        dispatch(fetchCampaignStats())
+    }, [dispatch])
+
     return (
         <>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, mt: 4 }}>
